@@ -16,7 +16,10 @@ local function SlashCommandHandler(msg, _)
 end
 
 function commands:config()
-    Settings.OpenToCategory(name)
+    if addon and addon.settings and addon.settings.category then
+        Settings.OpenToCategory(addon.settings.category.ID)
+        return
+    end
 end
 
 function commands:reset()
